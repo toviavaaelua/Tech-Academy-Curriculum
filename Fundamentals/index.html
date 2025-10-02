@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAMARIX GROUP - 6-Week Tech Fundamentals Course</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f7f4; 
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        /* Custom styles for logo responsiveness */
+        .logo-container {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .logo {
+            max-width: 250px; /* Adjust max-width as needed */
+            height: auto;
+            display: inline-block; /* To center it properly */
+        }
+        @media (min-width: 768px) {
+            .logo {
+                max-width: 300px; /* Slightly larger on desktop */
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto max-w-6xl p-4 sm:p-6 lg:p-8">
+
+        <header class="text-center mb-10">
+            <div class="logo-container">
+                <img src="/image/image.png" alt="TAMARIX GROUP Logo" class="logo">
+            </div>
+            <h1 class="text-3xl md:text-4xl font-bold text-teal-800 hidden">6-Week Tech Fundamentals Course</h1> <p class="mt-2 text-lg text-gray-600">Your journey to digital skills for success.</p>
+        </header>
+
+        <main>
+            <section id="curriculum-explorer" class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-teal-700 mb-2">Explore the Weekly Plan</h2>
+                    <p class="text-gray-600">Click on a week below to see the detailed plan, including the key concepts you'll learn, the project you'll build, and the skills you'll demonstrate. This step-by-step guide is designed for beginners to build confidence and practical abilities.</p>
+                </div>
+                
+                <div id="week-tabs" class="flex flex-wrap justify-center gap-2 mb-8">
+                </div>
+
+                <div id="week-content-container" class="transition-opacity duration-500">
+                </div>
+            </section>
+
+            <section id="skill-progression" class="mt-12">
+                 <div class="text-center mb-8">
+                    <h2 class="text-2xl font-bold text-teal-700">Visualize Your Skill Progression</h2>
+                    <p class="mt-2 text-gray-600 max-w-3xl mx-auto">This chart shows how the complexity of skills builds week by week. You'll start with the basics and gradually move to more advanced projects, ensuring a smooth and steady learning curve.</p>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                    <div class="chart-container">
+                        <canvas id="progressChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <section id="final-outcomes" class="mt-12">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-bold text-teal-700">Your Mandatory Course Outcomes</h2>
+                    <p class="mt-2 text-gray-600 max-w-3xl mx-auto">By the end of this 6-week course, you will have created three essential documents, proving your new digital skills and preparing you for professional and personal success.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-2xl shadow-lg p-6 text-center transform hover:scale-105 transition-transform duration-300">
+                        <div class="text-5xl mb-4">📄</div>
+                        <h3 class="text-xl font-semibold text-teal-800 mb-2">Professional Document</h3>
+                        <p class="text-gray-600">A complete, saved, and correctly formatted CV or job application letter using word processing software.</p>
+                    </div>
+                    <div class="bg-white rounded-2xl shadow-lg p-6 text-center transform hover:scale-105 transition-transform duration-300">
+                        <div class="text-5xl mb-4">💹</div>
+                        <h3 class="text-xl font-semibold text-teal-800 mb-2">Financial Planning Sheet</h3>
+                        <p class="text-gray-600">A personal budget spreadsheet with clear data, using at least three formulas to show a path to a savings goal.</p>
+                    </div>
+                    <div class="bg-white rounded-2xl shadow-lg p-6 text-center transform hover:scale-105 transition-transform duration-300">
+                        <div class="text-5xl mb-4">🎤</div>
+                        <h3 class="text-xl font-semibold text-teal-800 mb-2">Summary Presentation</h3>
+                        <p class="text-gray-600">A clear, five-slide presentation summarizing your CV and budget, delivered in simple English to an audience.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="text-center mt-12 py-6 border-t border-gray-200">
+            <p class="text-gray-500">Tech Academy Curriculum Explorer</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const curriculumData = [
+                {
+                    week: 1,
+                    focus: "Computer & Internet Basics",
+                    concepts: [
+                        "<b>Hardware:</b> What is a computer? Screen, keyboard, mouse. How to turn it ON/OFF safely.",
+                        "<b>Software:</b> What is an App/Program?",
+                        "<b>Files:</b> How to create folders and save files.",
+                        "<b>Internet:</b> Connect to Wi-Fi. How to use a web browser (e.g., Chrome). Basic search (Google).",
+                        "<b>Safety:</b> Keep passwords secret."
+                    ],
+                    project: '<b>Personal Folder Setup:</b> Create a folder named "My Projects" and save 3 files inside it (e.g., pictures or simple text files).',
+                    outcome: '<b>Demonstrate:</b> Correctly turn the computer ON and OFF. Locate and open their "My Projects" folder. Perform one successful Google search for a topic.'
+                },
+                {
+                    week: 2,
+                    focus: "Word Processing (Part 1)",
+                    concepts: [
+                        "<b>Typing:</b> Learn how to type text. Correcting mistakes (Delete/Backspace).",
+                        "<b>Basic Formatting:</b> Changing font size, making text <b>bold</b> or <i>italic</i>.",
+                        "<b>Saving & Sharing:</b> Saving the document correctly. How to email the file.",
+                        "<b>Structure:</b> How to use Bullet Points and Number Lists."
+                    ],
+                    project: '<b>"My Introduction" Letter:</b> Write a short, formal letter (about 150 words) introducing themselves and their goal for the course. Must include name, date, and 3 bullet points about their hobbies.',
+                    outcome: '<b>Submission:</b> A correctly formatted, saved, and shared (via email or link) letter demonstrating font size change and bullet points.'
+                },
+                {
+                    week: 3,
+                    focus: "Word Processing (Part 2) & CV",
+                    concepts: [
+                        "<b>Document Layout:</b> Setting margins and alignment (Left, Center).",
+                        "<b>Tables:</b> Using simple tables to organize information (e.g., work history).",
+                        "<b>Templates:</b> How to use a CV/Resume template (fill-in-the-blanks)."
+                    ],
+                    project: "<b>Final CV/Resume:</b> Complete their personal CV or Resume, ready for job applications. Must include a section for Education and Work Experience formatted using either lists or a simple table.",
+                    outcome: "<b>Submission:</b> A professional-looking CV/Resume (1-2 pages) using tables, correct alignment, and appropriate font styles."
+                },
+                {
+                    week: 4,
+                    focus: "Spreadsheets (Part 1)",
+                    concepts: [
+                        "<b>Concepts:</b> What are Cells (A1, B5)? Rows and Columns.",
+                        "<b>Data Entry:</b> Typing numbers and text into cells.",
+                        "<b>Basic Math:</b> How to add numbers (using the <b>SUM</b> formula). How to subtract (-).",
+                        "<b>Formatting:</b> Currency ($), Percents (%)."
+                    ],
+                    project: "<b>Simple Income/Expense Sheet:</b> Create a list of 5 income sources and 5 expenses. Use the <code>SUM</code> formula to find the <b>Total Income</b> and <b>Total Expenses</b>.",
+                    outcome: "<b>Demonstrate:</b> Correctly enter data. Use the <code>SUM()</code> function twice. Format numbers as currency."
+                },
+                {
+                    week: 5,
+                    focus: "Spreadsheets (Part 2) & Budget",
+                    concepts: [
+                        "<b>Advanced Formulas:</b> Use the subtraction formula to find the difference: <code>Total Income - Total Expenses</code>.",
+                        "<b>Goal Focus:</b> Calculate how much money is needed to reach a simple savings goal (e.g., \"Buy a new phone\").",
+                        "<b>Data Analysis:</b> How to create a simple chart or graph from the budget data."
+                    ],
+                    project: "<b>Personal Goal Budget:</b> Create a budget sheet for 3 months. Calculate savings needed each month to achieve a specific personal goal. Must use 3 different formulas (<code>SUM</code>, Subtraction, and Division/Multiplication for projections).",
+                    outcome: "<b>Submission:</b> A functional 3-month budget spreadsheet clearly showing the final calculation towards their savings goal. Must include one chart visualizing expenses."
+                },
+                {
+                    week: 6,
+                    focus: "Presentations & Group Project",
+                    concepts: [
+                        "<b>Presentation Basics:</b> Creating new slides. Adding text and titles.",
+                        "<b>Media:</b> Inserting pictures and tables (from their Word/Spreadsheet work).",
+                        "<b>Delivery:</b> Simple presentation tips (speaking clearly, looking at the audience).",
+                        "<b>Group Work:</b> Collaboration basics and assigning tasks."
+                    ],
+                    project: "<b>Final Presentation:</b> Individually create and deliver a short presentation (5 slides, 3 minutes) summarizing their new CV and Personal Budget Goal. <b>Group Project:</b> Students collaborate to create a single presentation on a pre-assigned simple topic (e.g., \"Online Shopping Safety\").",
+                    outcome: "<b>Delivery:</b> Each student must deliver their individual presentation confidently. The group must deliver a cohesive project demonstrating collaboration (each student presents one slide)."
+                }
+            ];
+
+            const tabsContainer = document.getElementById('week-tabs');
+            const contentContainer = document.getElementById('week-content-container');
+            let activeTab = null;
+
+            function showWeek(weekIndex) {
+                const weekData = curriculumData[weekIndex];
+                
+                contentContainer.style.opacity = 0;
+                
+                setTimeout(() => {
+                    contentContainer.innerHTML = `
+                        <div class="bg-teal-50 rounded-lg p-6">
+                            <h3 class="text-xl font-bold text-teal-800 mb-4">${weekData.focus}</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <h4 class="font-semibold text-teal-700 mb-2">💡 Key Concepts</h4>
+                                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                        ${weekData.concepts.map(c => `<li>${c}</li>`).join('')}
+                                    </ul>
+                                </div>
+                                <div class="space-y-4">
+                                    <div>
+                                        <h4 class="font-semibold text-teal-700 mb-2">🛠️ Project / Deliverable</h4>
+                                        <p class="text-gray-700">${weekData.project}</p>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-teal-700 mb-2">🎯 Assessment Outcome</h4>
+                                        <p class="text-gray-700">${weekData.outcome}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                     contentContainer.style.opacity = 1;
+                }, 200);
+
+                if (activeTab) {
+                    activeTab.classList.remove('bg-teal-600', 'text-white');
+                    activeTab.classList.add('bg-gray-200', 'text-gray-700');
+                }
+                const newActiveTab = tabsContainer.children[weekIndex];
+                newActiveTab.classList.remove('bg-gray-200', 'text-gray-700');
+                newActiveTab.classList.add('bg-teal-600', 'text-white');
+                activeTab = newActiveTab;
+            }
+
+            curriculumData.forEach((week, index) => {
+                const tab = document.createElement('button');
+                tab.textContent = `Week ${week.week}`;
+                tab.className = 'px-4 py-2 rounded-lg font-semibold transition-colors duration-300 bg-gray-200 text-gray-700';
+                tab.addEventListener('click', () => showWeek(index));
+                tabsContainer.appendChild(tab);
+            });
+
+            const ctx = document.getElementById('progressChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: curriculumData.map(w => `Week ${w.week}`),
+                    datasets: [{
+                        label: 'Skill Complexity',
+                        data: [2, 3, 5, 6, 8, 10],
+                        backgroundColor: 'rgba(15, 118, 110, 0.6)',
+                        borderColor: 'rgba(15, 118, 110, 1)',
+                        borderWidth: 1,
+                        borderRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Relative Complexity Level'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                             callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        label += context.parsed.y;
+                                    }
+                                    return label;
+                                },
+                                afterLabel: function(context) {
+                                    return `Focus: ${curriculumData[context.dataIndex].focus}`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            showWeek(0);
+        });
+    </script>
+</body>
+</html>
