@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAMARIX GROUP - Course Selection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #e5f5f4; /* Light teal background */
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo-container {
+            margin-bottom: 2.5rem;
+        }
+        .logo {
+            max-width: 200px; 
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container mx-auto max-w-4xl p-6 md:p-10">
+
+        <header class="text-center">
+            <div class="logo-container">
+                <!-- CORRECTED: Changed image source to the actual uploaded filename. 
+                     ASSUMPTION: This image file (Tamarix-logo-cmyk_adjusted.png) 
+                     is placed in the SAME directory as this index.html file. -->
+                <img src="Tamarix-logo-cmyk_adjusted.png" alt="Tamarix Group Logo - Tech Academy Branding" class="logo">
+            </div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-teal-800 mb-2">Welcome to the Tech Academy</h1>
+            <p class="text-lg text-gray-600 mb-10">Please select the level you wish to study.</p>
+        </header>
+
+        <main class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+            <!-- Fundamentals Card -->
+            <a href="./fundamentals/index.html" class="block">
+                <div class="bg-white p-6 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 border-b-4 border-teal-600 transform hover:-translate-y-1">
+                    <h2 class="text-2xl font-semibold text-teal-700 mb-3">Fundamentals</h2>
+                    <p class="text-gray-600 mb-4">Start here! Master computer basics, file management, and essential software (Word, Excel, PowerPoint).</p>
+                    <button class="w-full bg-teal-600 text-white py-2 rounded-lg font-bold hover:bg-teal-700 transition-colors">Start Fundamentals</button>
+                </div>
+            </a>
+
+            <!-- Intermediate Card (Placeholder Link) -->
+            <a href="./intermediate/index.html" class="block pointer-events-none opacity-60">
+                <div class="bg-white p-6 rounded-xl shadow-lg border-b-4 border-gray-400">
+                    <h2 class="text-2xl font-semibold text-gray-700 mb-3">Intermediate</h2>
+                    <p class="text-gray-500 mb-4">*(Coming Soon)* Deep dive into advanced spreadsheet functions, cloud services, and digital marketing basics.</p>
+                    <button class="w-full bg-gray-400 text-white py-2 rounded-lg font-bold cursor-not-allowed">Intermediate (Locked)</button>
+                </div>
+            </a>
+
+            <!-- Advanced Card (Placeholder Link) -->
+            <a href="./advanced/index.html" class="block pointer-events-none opacity-60">
+                <div class="bg-white p-6 rounded-xl shadow-lg border-b-4 border-gray-400">
+                    <h2 class="text-2xl font-semibold text-gray-700 mb-3">Advanced</h2>
+                    <p class="text-gray-500 mb-4">*(Coming Soon)* Introduction to web coding (HTML/CSS), data analysis tools, and cybersecurity principles.</p>
+                    <button class="w-full bg-gray-400 text-white py-2 rounded-lg font-bold cursor-not-allowed">Advanced (Locked)</button>
+                </div>
+            </a>
+        </main>
+        
+        <footer class="text-center mt-12 text-gray-500 text-sm">
+            <p>&copy; 2024 TAMARIX GROUP Tech Academy</p>
+        </footer>
+
+    </div>
+</body>
+</html>
